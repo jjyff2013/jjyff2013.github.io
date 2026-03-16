@@ -1,13 +1,138 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
-    <title>家用下载网站</title>
-  </head>
-  <body>
-    《盗梦空间》：<a href="https://www.123865.com/s/1Ikrjv-ePYMv" target="_blank">点击查看123云盘链接</a> <br>
-    植物大战僵尸：<a href="https://wwben.lanzoul.com/idafQ3enf3pe" target="_blank">点击查看蓝奏云链接</a> <br>
-    Minecraft：<a href="https://wwben.lanzoul.com/if1qM3enfkkb" target="_blank">点击查看蓝奏云链接密码7aqj</a> <br>
-    <a href="download/game.apk" download>测试</a>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家用下载站</title>
+    <style>
+        /* 基础样式设置 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 { color: #00ccff; margin-bottom: 30px; font-size: 1.5rem; }
+
+        /* 下载列表卡片化 */
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .item {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .item span { font-weight: bold; font-size: 15px; }
+
+        /* 链接按钮美化 */
+        .btn-link {
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .btn-link:active { transform: scale(0.95); background: #0056b3; }
+
+        /* 分割线 */
+        hr {
+            width: 100%;
+            border: 0;
+            border-top: 1px solid #444;
+            margin: 30px 0;
+        }
+
+        /* 底部输入框区域 */
+        .login-section {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-section p { font-size: 14px; color: #888; }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        .btn-go {
+            width: 88%;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏠 家用下载网站</h1>
+
+    <div class="container">
+        <div class="item">
+            <span>🎬 盗梦空间</span>
+            <a href="https://www.123865.com/s/1Ikrjv-ePYMv" class="btn-link" target="_blank">123云盘</a>
+        </div>
+
+        <div class="item">
+            <span>🌻 植物大战僵尸</span>
+            <a href="https://wwben.lanzoul.com/idafQ3enf3pe" class="btn-link" target="_blank">蓝奏云</a>
+        </div>
+
+        <div class="item">
+            <span>⛏️ Minecraft</span>
+            <a href="https://wwben.lanzoul.com/if1qM3enfkkb" class="btn-link" target="_blank">蓝奏云 (7aqj)</a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="login-section">
+        <p> 测试功能，请勿使用 </p>
+        <input type="text" id="passInput" placeholder="please input the password">
+        <button class="btn-go" onclick="goToPrivate()">ok</button>
+    </div>
+
+    <script>
+        function goToPrivate() {
+            const pwd = document.getElementById('passInput').value;
+            if (pwd) {
+                // 跳转逻辑：输入 xxx 跳转到 xxx.html
+                window.location.href = pwd + ".html";
+            } else {
+                alert("please input the password");
+            }
+        }
+    </script>
+
+</body>
 </html>
