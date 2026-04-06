@@ -68,6 +68,44 @@
 </div>
 
 <script>
+    // 定义读取路径
+    const filePath = '/file_list.txt';
+
+    async function loadTxtFile() {
+        const container = document.getElementById('file-content');
+        try {
+            // 使用 cache: "no-cache" 确保每次都能读取到 GitHub 上的最新内容
+            const response = await fetch(filePath, { cache: "no-cache" });
+            
+            if (response.ok) {
+                const text = await response.text();
+                container.textContent = text;
+            } else {
+                container.innerHTML = `<span style="color: #ff7675;">无法找到文件 (${response.status})</span>`;
+            }
+        } catch (error) {
+            container.innerHTML = `<span style="color: #ff7675;">读取出错: ${error.message}</span>`;
+        }
+    }
+
+    // 执行函数
+    loadTxtFile();
+</script>
+
+</body>
+</html><body>
+
+<div class="main-card">
+    <h1>欢迎回来，管理员</h1>
+    
+    <p class="subtitle">以下是网页文件列表：</p>
+
+    <div id="file-content" class="content-box">
+        <span class="loading-text">正在读取数据...</span>
+    </div>
+</div>
+
+<script>
     // 自动检测基础路径，防止 GitHub Pages 子目录路径错误
     const getFilePath = () => {
         const path = window.location.pathname;
