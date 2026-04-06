@@ -68,29 +68,40 @@
 </div>
 
 <script>
-    // 定义读取路径
-    const filePath = './file_list.txt';
+    // 自动检测基础路径，防止 GitHub Pages 子目录路径错误
+    const getFilePath = () => {
+        const path = window.location.pathname;
+        const directory = path.substring(0, path.lastIndexOf('/'));
+        return `${directory}/file_list.txt`.replace(/\/+/g, '/');
+    };
 
     async function loadTxtFile() {
         const container = document.getElementById('file-content');
+        const targetUrl = getFilePath();
+        
+        console.log("正在尝试请求文件:", targetUrl); // 在浏览器 F12 控制台查看输出
+
         try {
-            // 使用 cache: "no-cache" 确保每次都能读取到 GitHub 上的最新内容
-            const response = await fetch(filePath, { cache: "no-cache" });
+            const response = await fetch(targetUrl, { cache: "no-cache" });
             
             if (response.ok) {
                 const text = await response.text();
                 container.textContent = text;
+                console.log("请求成功！");
             } else {
-                container.innerHTML = `<span style="color: #ff7675;">无法找到文件 (${response.status})</span>`;
+                container.innerHTML = `
+                    <span style="color: #ff7675;">无法找到文件 (错误代码: ${response.status})</span><br>
+                    <small style="color: #636e72;">请求路径: ${targetUrl}</small>
+                `;
             }
         } catch (error) {
-            container.innerHTML = `<span style="color: #ff7675;">读取出错: ${error.message}</span>`;
+            container.innerHTML = `<span style="color: #ff7675;">网络请求出错: ${error.message}</span>`;
         }
     }
 
-    // 执行函数
     loadTxtFile();
 </script>
+
 
 </body>
 </html>
