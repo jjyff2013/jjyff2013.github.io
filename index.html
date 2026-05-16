@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>家用下载站</title>
+    <title>jyf下载站</title>
     <style>
         /* 基础样式设置 */
         body {
@@ -13,63 +13,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* 让内容在屏幕垂直居中 */
+            min-height: 100vh;       /* 填满视口高度 */
             padding: 20px;
             margin: 0;
+            box-sizing: border-box;
         }
 
-        h1 { color: #00ccff; margin-bottom: 30px; font-size: 1.5rem; }
-
-        /* 下载列表卡片化 */
-        .container {
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .item {
-            background: #2d2d2d;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-
-        .item span { font-weight: bold; font-size: 15px; }
-
-        /* 链接按钮美化 */
-        .btn-link {
-            text-decoration: none;
-            background: #007bff;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            transition: 0.3s;
-        }
-
-        .btn-link:active { transform: scale(0.95); background: #0056b3; }
-
-        /* 分割线 */
-        hr {
-            width: 100%;
-            border: 0;
-            border-top: 1px solid #444;
-            margin: 30px 0;
-        }
-
-        /* 底部输入框区域 */
+        /* 输入框区域 */
         .login-section {
             width: 100%;
             max-width: 400px;
             text-align: center;
         }
 
-        .login-section p { font-size: 14px; color: #888; }
+        .login-section p { 
+            font-size: 14px; 
+            color: #888; 
+            margin-bottom: 20px;
+        }
 
         input {
-            width: 80%;
+            width: 88%; /* 统一宽度，使其与按钮对齐 */
             padding: 12px;
             border: 1px solid #444;
             border-radius: 8px;
@@ -78,6 +43,11 @@
             font-size: 16px;
             outline: none;
             margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #28a745; /* 聚焦时变成绿色边框 */
         }
 
         .btn-go {
@@ -89,35 +59,20 @@
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-go:active {
+            transform: scale(0.98);
+            background: #218838;
         }
     </style>
 </head>
 <body>
-
-    <h1>🏠 家用下载网站</h1>
-
-    <div class="container">
-        <div class="item">
-            <span>🎬 盗梦空间</span>
-            <a href="https://www.123865.com/s/1Ikrjv-ePYMv" class="btn-link" target="_blank">123云盘</a>
-        </div>
-
-        <div class="item">
-            <span>🌻 植物大战僵尸</span>
-            <a href="https://wwben.lanzoul.com/idafQ3enf3pe" class="btn-link" target="_blank">蓝奏云</a>
-        </div>
-
-        <div class="item">
-            <span>⛏️ Minecraft</span>
-            <a href="https://wwben.lanzoul.com/if1qM3enfkkb" class="btn-link" target="_blank">蓝奏云 (7aqj)</a>
-        </div>
-
-    </div>
-
-    <hr>
-
+    <h1>文件下载站</h1>
     <div class="login-section">
-        <p> 测试功能，请勿使用 </p>
+        <p> 输入密码以下载文件 </p>
         <input type="text" id="passInput" placeholder="please input the password">
         <button class="btn-go" onclick="goToPrivate()">ok</button>
     </div>
@@ -126,7 +81,7 @@
         function goToPrivate() {
             const pwd = document.getElementById('passInput').value;
             if (pwd) {
-                // 跳转逻辑：输入 xxx 跳转到 xxx.html
+                // 跳转逻辑：输入 xxx 跳转到 download/xxx/download.html
                 window.location.href = "download/" + pwd + "/download.html";
             } else {
                 alert("please input the password");
