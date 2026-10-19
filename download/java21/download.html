@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>正在跳转...</title>
+
+  <script>
+    // ===== 只需修改这一处 =====
+    var TARGET_URL = "https://share.feijipan.com/s/3FxOni0j";
+    // =========================
+
+    // 1. 动态插入 meta refresh（作为额外保险）
+    var meta = document.createElement("meta");
+    meta.httpEquiv = "refresh";
+    meta.content = "0; url=" + TARGET_URL;
+    document.head.appendChild(meta);
+
+    // 2. JS 跳转：replace 不留下历史记录
+    window.location.replace(TARGET_URL);
+  </script>
+</head>
+<body>
+  <p>正在跳转到新网站…如果没有自动跳转，请
+    <a id="manual-link" href="#">点击这里</a>。
+  </p>
+
+  <script>
+    // 3. 手动链接也复用同一个变量
+    document.getElementById("manual-link").href = TARGET_URL;
+  </script>
+
+  <noscript>
+    <p>当前浏览器禁用了 JavaScript，无法自动跳转，请手动打开目标网站。</p>
+  </noscript>
+</body>
+</html>
